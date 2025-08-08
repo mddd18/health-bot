@@ -7,6 +7,8 @@ logger = logging.getLogger(__name__)
 
 ASK_GENDER, ASK_AGE, ASK_HEIGHT, ASK_WEIGHT, ASK_WAIST = range(5)
 
+token = os.getenv("bot_token")
+
 # --- START ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
@@ -119,8 +121,8 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- MAIN ---
 def main():
-    TOKEN = "8161014172:AAE8aoIONNUjcaLyB4Nj368yxrqIlm6VX_E"
-    app = Application.builder().token(TOKEN).build()
+    
+    app = Application.builder().token(token).build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
